@@ -22,8 +22,8 @@ environment:
   BuildEnvironment: appveyor
   HANGFIRE_LOGIN:
     secure: vTUgNUhBXIAnQWCxUwygkQ==
-    HANGFIRE_PASSWORD:
-      secure: nmO2N410OJ4KdDiZnNXakkgW0JXqRahslGYKYMHl74g=
+  HANGFIRE_PASSWORD:
+    secure: nmO2N410OJ4KdDiZnNXakkgW0JXqRahslGYKYMHl74g=
 
 skip_branch_with_pr: true
 shallow_clone: true
@@ -63,6 +63,6 @@ deploy:
   - provider: NuGet
     skip_symbols: true
     api_key: 
-      secure: GdfWH5BGrFoHBIuQPebg1ci3odJAeUUOZ2KFJR7y0mBU+kwicu/lNow1vRRjLBU3
+      secure: kR5GOyCrdIn+l9Lqw78P5HqwsWnYU7VUUXF50gDKGYiPOsN+3kKfyeQdgm+ZmbFY
     on:
       appveyor_repo_tag: true
