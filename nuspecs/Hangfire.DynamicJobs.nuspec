@@ -46,6 +46,8 @@ Initial release
     <file src="LICENSE" />
     <file src="LICENSE_STANDARD" />
     <file src="LICENSE_ROYALTYFREE" />
+    <file src="COPYING" />
+    <file src="COPYING.LESSER" />
     <file src="..\src\Hangfire.DynamicJobs\**\*.cs" target="src" exclude="**\obj*\**\*.cs" />
   </files>
 </package>
