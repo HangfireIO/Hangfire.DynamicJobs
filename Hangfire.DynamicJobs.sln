@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{C91DF7AA-0CEC-4332-BC4E-F07B26364825}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspecs", "nuspecs", "{DE1F31A5-3288-440D-AA84-17D642721885}"
+	ProjectSection(SolutionItems) = preProject
+		nuspecs\Hangfire.DynamicJobs.nuspec = nuspecs\Hangfire.DynamicJobs.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{741601E5-08F9-40B1-9CB1-B05B141A52D1}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		psake-project.ps1 = psake-project.ps1
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.Microservices.Dashboard", "samples\Hangfire.Microservices.Dashboard\Hangfire.Microservices.Dashboard.csproj", "{8FA496E5-5F94-447C-89C2-E0580466851C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.Microservices.NewsletterService", "samples\Hangfire.Microservices.NewsletterService\Hangfire.Microservices.NewsletterService.csproj", "{EF923710-EA90-4E9C-B9E7-B25B05936DBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.Microservices.OrdersService", "samples\Hangfire.Microservices.OrdersService\Hangfire.Microservices.OrdersService.csproj", "{DE5AC6F4-7A7A-4D73-A638-180BE598F71D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.DynamicJobs", "src\Hangfire.DynamicJobs\Hangfire.DynamicJobs.csproj", "{CC64C514-C198-4C6C-9EE8-43201429E755}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.DynamicJobs.Tests", "tests\Hangfire.DynamicJobs.Tests\Hangfire.DynamicJobs.Tests.csproj", "{4CE8D914-AF83-4C58-A0FA-E5AE099E6A47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8FA496E5-5F94-447C-89C2-E0580466851C} = {C91DF7AA-0CEC-4332-BC4E-F07B26364825}
+		{EF923710-EA90-4E9C-B9E7-B25B05936DBD} = {C91DF7AA-0CEC-4332-BC4E-F07B26364825}
+		{DE5AC6F4-7A7A-4D73-A638-180BE598F71D} = {C91DF7AA-0CEC-4332-BC4E-F07B26364825}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FA496E5-5F94-447C-89C2-E0580466851C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA496E5-5F94-447C-89C2-E0580466851C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA496E5-5F94-447C-89C2-E0580466851C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA496E5-5F94-447C-89C2-E0580466851C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF923710-EA90-4E9C-B9E7-B25B05936DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF923710-EA90-4E9C-B9E7-B25B05936DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF923710-EA90-4E9C-B9E7-B25B05936DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF923710-EA90-4E9C-B9E7-B25B05936DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE5AC6F4-7A7A-4D73-A638-180BE598F71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5AC6F4-7A7A-4D73-A638-180BE598F71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5AC6F4-7A7A-4D73-A638-180BE598F71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5AC6F4-7A7A-4D73-A638-180BE598F71D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC64C514-C198-4C6C-9EE8-43201429E755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC64C514-C198-4C6C-9EE8-43201429E755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC64C514-C198-4C6C-9EE8-43201429E755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC64C514-C198-4C6C-9EE8-43201429E755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CE8D914-AF83-4C58-A0FA-E5AE099E6A47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE8D914-AF83-4C58-A0FA-E5AE099E6A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CE8D914-AF83-4C58-A0FA-E5AE099E6A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE8D914-AF83-4C58-A0FA-E5AE099E6A47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

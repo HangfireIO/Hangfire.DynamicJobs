@@ -1,0 +1,68 @@
+# AppVeyor CI build file, https://ci.appveyor.com/project/odinserj/hangfire
+
+# Notes:
+#   - Minimal appveyor.yml file is an empty file. All sections are optional.
+#   - Indent each level of configuration with 2 spaces. Do not use tabs!
+#   - All section names are case-sensitive.
+#   - Section names should be unique on each level.
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Please don't edit manually, use the `build.bat version` command instead
+version: 0.1.0-build-0{build}
+
+image:
+  - Visual Studio 2022
+  - Ubuntu
+
+# environment variables
+environment:
+  BuildEnvironment: appveyor
+  HANGFIRE_LOGIN:
+    secure: vTUgNUhBXIAnQWCxUwygkQ==
+    HANGFIRE_PASSWORD:
+      secure: nmO2N410OJ4KdDiZnNXakkgW0JXqRahslGYKYMHl74g=
+
+skip_branch_with_pr: true
+shallow_clone: true
+
+nuget:
+  account_feed: true
+  project_feed: true
+  disable_publish_on_pr: true
+
+pull_requests:
+  do_not_increment_build_number: true
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+  - cmd: build.bat ci
+  - sh: dotnet test tests/Hangfire.DynamicJobs.Tests/Hangfire.DynamicJobs.Tests.csproj -c Release -f netcoreapp3.1
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+test: off
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+artifacts:
+  - path: 'build\**\*.nupkg'
+  - path: 'build\**\*.zip'
+
+deploy:
+  - provider: NuGet
+    skip_symbols: true
+    api_key: 
+      secure: GdfWH5BGrFoHBIuQPebg1ci3odJAeUUOZ2KFJR7y0mBU+kwicu/lNow1vRRjLBU3
+    on:
+      appveyor_repo_tag: true

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Hangfire.Microservices.NewsletterService\Hangfire.Microservices.NewsletterService.csproj" />
+        <ProjectReference Include="..\..\src\Hangfire.DynamicJobs\Hangfire.DynamicJobs.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.8.0" />
+        <PackageReference Include="Hangfire.Pro.Redis" Version="3.0.0" />
+    </ItemGroup>
+
+</Project>
