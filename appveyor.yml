@@ -29,8 +29,6 @@ skip_branch_with_pr: true
 shallow_clone: true
 
 nuget:
-  account_feed: true
-  project_feed: true
   disable_publish_on_pr: true
 
 pull_requests:
