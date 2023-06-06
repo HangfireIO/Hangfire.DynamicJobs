@@ -49,7 +49,7 @@ manager.AddOrUpdateDynamic<INewsletterService>(
     Cron.Monthly(),
     new DynamicRecurringJobOptions()
     {
-        Filters = new [] { new QueueAttribute("newsletter") },
+        Filters = new [] { new MyFilterAttribute("newsletter") },
         TimeZone = TimeZoneInfo.Local
     });
 ```
