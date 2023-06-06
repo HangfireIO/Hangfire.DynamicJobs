@@ -138,15 +138,13 @@ namespace Hangfire
             if (job == null) throw new ArgumentNullException(nameof(job));
 
             var invocationData = InvocationData.SerializeJob(job);
+            var dynamicJob = new DynamicJob(invocationData.Type,
+                invocationData.Method,
+                !String.IsNullOrEmpty(invocationData.ParameterTypes) ? invocationData.ParameterTypes : null,
+                invocationData.Arguments,
+                filters?.ToArray());
 
-            return Job.FromExpression(() => DynamicJob.Execute(
-                new DynamicJob(
-                    invocationData.Type,
-                    invocationData.Method,
-                    !String.IsNullOrEmpty(invocationData.ParameterTypes) ? invocationData.ParameterTypes : null,
-                    invocationData.Arguments,
-                    filters.ToArray()),
-                default));
+            return Job.FromExpression(() => DynamicJob.Execute(dynamicJob, default));
         }
     }
 }
