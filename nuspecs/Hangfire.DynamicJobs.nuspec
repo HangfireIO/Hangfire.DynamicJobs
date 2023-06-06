@@ -13,6 +13,9 @@
     <copyright>Copyright © 2023 Hangfire OÜ</copyright>
     <tags>Hangfire RecurringJobs</tags>
     <releaseNotes>https://github.com/HangfireIO/Hangfire.DynamicJobs/releases
+0.1.1
+• Fixed – System.ArgumentNullException: Value cannot be null. (Parameter 'source').
+
 0.1.0
 Initial release
 
