@@ -17,13 +17,15 @@ namespace Hangfire
             [NotNull] string method,
             [CanBeNull] string parameterTypes,
             [CanBeNull] string args,
-            [CanBeNull] JobFilterAttribute[] filters)
+            [CanBeNull] JobFilterAttribute[] filters,
+            [CanBeNull] JobDisplayNameAttribute displayName)
         {
             Type = type ?? throw new ArgumentNullException(nameof(type));
             Method = method ?? throw new ArgumentNullException(nameof(method));
             ParameterTypes = parameterTypes;
             Args = args;
             Filters = filters;
+            DisplayName = displayName;
         }
 
         [NotNull]
@@ -45,6 +47,11 @@ namespace Hangfire
         [CanBeNull]
         [JsonProperty("f",  NullValueHandling = NullValueHandling.Ignore, ItemTypeNameHandling = TypeNameHandling.Auto)]
         public JobFilterAttribute[] Filters { get; }
+
+        //TODO: Check if is better save display name as resolved string (maybe when you use location resources can be cause crash?)
+        [CanBeNull]
+        [JsonProperty("dn", NullValueHandling = NullValueHandling.Ignore, ItemTypeNameHandling = TypeNameHandling.Auto)]
+        public JobDisplayNameAttribute DisplayName { get; }
 
         [PublicAPI]
         [DynamicJobDisplayName]
