@@ -40,6 +40,7 @@ pull_requests:
 # to run your custom scripts instead of automatic MSBuild
 build_script:
   - cmd: build.bat ci
+  - sh: nuget locals all -clear
   - sh: dotnet test tests/Hangfire.DynamicJobs.Tests -c Release -f netcoreapp3.1
 
 #---------------------------------#
