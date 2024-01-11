@@ -2,15 +2,16 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3;netstandard2.0;net451</TargetFrameworks>
-    <DebugType>portable</DebugType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DebugType>embedded</DebugType>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <NoWarn>1591</NoWarn>
     <RootNamespace>Hangfire</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='net451'">
-    <DebugType>full</DebugType>
+  <PropertyGroup Condition="'$(APPVEYOR)' == 'True'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
   
   <ItemGroup>
@@ -19,5 +20,6 @@
   
   <ItemGroup>
     <PackageReference Include="Hangfire.Core" Version="1.8.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
 </Project>
