@@ -26,7 +26,6 @@ environment:
     secure: nmO2N410OJ4KdDiZnNXakkgW0JXqRahslGYKYMHl74g=
 
 skip_branch_with_pr: true
-shallow_clone: true
 
 nuget:
   disable_publish_on_pr: true
@@ -41,7 +40,7 @@ pull_requests:
 # to run your custom scripts instead of automatic MSBuild
 build_script:
   - cmd: build.bat ci
-  - sh: dotnet test tests/Hangfire.DynamicJobs.Tests/Hangfire.DynamicJobs.Tests.csproj -c Release -f netcoreapp3.1
+  - sh: dotnet test tests/Hangfire.DynamicJobs.Tests -c Release -f netcoreapp3.1
 
 #---------------------------------#
 #       tests configuration       #
