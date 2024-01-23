@@ -38,9 +38,9 @@ namespace Hangfire
                 }
 
                 builder.Append($">{html.HtmlEncode(typeName)}</span>");
-                builder.Append(".");
+                builder.Append('.');
                 builder.Append(html.HtmlEncode(dynamicJob.Method));
-                builder.Append("(");
+                builder.Append('(');
 
                 if (dynamicJob.ParameterTypes != null)
                 {
@@ -59,7 +59,7 @@ namespace Hangfire
                     }
                 }
 
-                builder.Append(")");
+                builder.Append(')');
                 builder.AppendLine("</code></pre></div></div>");
 
                 builder.AppendLine("<h4>Encoded Arguments</h4>");

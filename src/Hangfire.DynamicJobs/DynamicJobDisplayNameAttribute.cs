@@ -8,7 +8,7 @@ using Hangfire.Dashboard;
 
 namespace Hangfire
 {
-    public class DynamicJobDisplayNameAttribute : JobDisplayNameAttribute
+    public sealed class DynamicJobDisplayNameAttribute : JobDisplayNameAttribute
     {
         public DynamicJobDisplayNameAttribute() : base("empty")
         {

@@ -2,24 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3;netstandard2.0;net451</TargetFrameworks>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <DebugType>embedded</DebugType>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     <NoWarn>1591</NoWarn>
     <RootNamespace>Hangfire</RootNamespace>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(APPVEYOR)' == 'True'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    <RestoreLockedMode>true</RestoreLockedMode>
-  </PropertyGroup>
-  
-  <ItemGroup>
-    <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
-  </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net451'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
@@ -27,6 +12,5 @@
   
   <ItemGroup>
     <PackageReference Include="Hangfire.Core" Version="1.8.0" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
 </Project>

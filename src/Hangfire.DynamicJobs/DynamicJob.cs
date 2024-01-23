@@ -2,6 +2,7 @@
 // Please see the LICENSE file for the licensing details.
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Hangfire.Annotations;
 using Hangfire.Common;
 using Hangfire.Server;
@@ -44,6 +45,8 @@ namespace Hangfire
 
         [CanBeNull]
         [JsonProperty("f",  NullValueHandling = NullValueHandling.Ignore, ItemTypeNameHandling = TypeNameHandling.Auto)]
+        [SuppressMessage("Performance", "CA1819:Properties should not return arrays")]
+        [SuppressMessage("Security", "CA2326:Do not use TypeNameHandling values other than None")]
         public JobFilterAttribute[] Filters { get; }
 
         [PublicAPI]
