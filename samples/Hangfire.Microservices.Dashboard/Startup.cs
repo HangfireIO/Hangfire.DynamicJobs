@@ -12,7 +12,7 @@ namespace Hangfire.Microservices.Dashboard
         {
             services.AddHangfire(config => config
                 .UseDynamicJobs()
-                .UseRedisStorage());
+                .UseSqlServerStorage("Database=Hangfire.DynamicJobs; Integrated Security=true; Trust Server Certificate=true"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

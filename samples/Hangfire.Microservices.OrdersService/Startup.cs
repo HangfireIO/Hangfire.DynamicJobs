@@ -13,7 +13,7 @@ namespace Hangfire.Microservices.OrdersService
         {
             services.AddHangfire(config => config
                 .UseDynamicJobs()
-                .UseRedisStorage());
+                .UseSqlServerStorage("Database=Hangfire.DynamicJobs; Integrated Security=true; Trust Server Certificate=true"));
 
             services.AddHangfireServer(config => config.Queues = new [] { "orders" });
         }
