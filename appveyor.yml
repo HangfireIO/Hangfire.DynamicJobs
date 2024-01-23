@@ -20,7 +20,9 @@ image: Visual Studio 2022
 #---------------------------------#
 
 before_build: nuget locals all -clear
-build_script: build.bat
+build_script: 
+  - cmd: dotnet restore --locked-mode
+  - cmd: build.bat
 
 #---------------------------------#
 #       tests configuration       #
