@@ -19,6 +19,7 @@ image: Visual Studio 2022
 #       build configuration       #
 #---------------------------------#
 
+before_build: nuget locals all -clear
 build_script: build.bat
 
 #---------------------------------#
