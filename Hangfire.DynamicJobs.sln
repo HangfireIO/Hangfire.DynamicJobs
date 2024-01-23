@@ -25,6 +25,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.DynamicJobs", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.DynamicJobs.Tests", "tests\Hangfire.DynamicJobs.Tests\Hangfire.DynamicJobs.Tests.csproj", "{4CE8D914-AF83-4C58-A0FA-E5AE099E6A47}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9F224817-9D46-4D0C-B2CE-46189617C68A}"
+	ProjectSection(SolutionItems) = preProject
+		tests\Directory.Build.props = tests\Directory.Build.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +39,7 @@ Global
 		{8FA496E5-5F94-447C-89C2-E0580466851C} = {C91DF7AA-0CEC-4332-BC4E-F07B26364825}
 		{EF923710-EA90-4E9C-B9E7-B25B05936DBD} = {C91DF7AA-0CEC-4332-BC4E-F07B26364825}
 		{DE5AC6F4-7A7A-4D73-A638-180BE598F71D} = {C91DF7AA-0CEC-4332-BC4E-F07B26364825}
+		{4CE8D914-AF83-4C58-A0FA-E5AE099E6A47} = {9F224817-9D46-4D0C-B2CE-46189617C68A}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8FA496E5-5F94-447C-89C2-E0580466851C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
