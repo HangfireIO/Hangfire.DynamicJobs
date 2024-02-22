@@ -15,6 +15,15 @@
     <copyright>Copyright © 2023-2024 Hangfire OÜ</copyright>
     <tags>Hangfire RecurringJobs</tags>
     <releaseNotes>https://github.com/HangfireIO/Hangfire.DynamicJobs/releases
+
+0.2.0
+• Project – Enable source link support with embedded symbols and repository-based sources.
+• Project – Sign NuGet package and .NET assemblies on build with a company's own certificate.
+• Project – Add readme file and icon to the NuGet package.
+• Project – Require NuGet package signature validation on restore.
+• Project – Restore NuGet package dependencies with a lock file in a locked mode.
+• Project – Enable static analysis via the Microsoft.CodeAnalysis.NetAnalyzers package.
+
 0.1.1
 • Fixed – System.ArgumentNullException: Value cannot be null. (Parameter 'source').
 
