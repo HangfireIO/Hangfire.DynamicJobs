@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 using Hangfire.Annotations;
 using Hangfire.Common;
@@ -138,11 +139,28 @@ namespace Hangfire
             if (job == null) throw new ArgumentNullException(nameof(job));
 
             var invocationData = InvocationData.SerializeJob(job);
+
+            //get display name form original job
+            var jobDisplayNameAttribute = job.Method.GetCustomAttributes<JobDisplayNameAttribute>(inherit: true).FirstOrDefault();
+            //TODO: maybe is better resolve name here and serialize as string?
+
+            //get queue filter from original job            
+            ////    Job.Method.GetMethodFilterAttributes() inaccessibile
+            ////    ReflectedAttributeCache.GetMethodFilterAttributes(job.Method); inaccessible
+            var typeFiltes = job.Type.GetTypeInfo().GetCustomAttributes(typeof(QueueAttribute), inherit: true).Cast<QueueAttribute>();
+            var methodFiltes = job.Method.GetCustomAttributes(typeof(QueueAttribute), inherit: true).Cast<QueueAttribute>();
+
+            //generate list of filters for dynamicjob
+            var dynamicfilters = new List<JobFilterAttribute>(filters?.ToArray() ?? Enumerable.Empty<JobFilterAttribute>());
+            dynamicfilters.AddRange(typeFiltes);
+            dynamicfilters.AddRange(methodFiltes);
+
             var dynamicJob = new DynamicJob(invocationData.Type,
                 invocationData.Method,
                 !String.IsNullOrEmpty(invocationData.ParameterTypes) ? invocationData.ParameterTypes : null,
                 invocationData.Arguments,
-                filters?.ToArray());
+                dynamicfilters?.ToArray(),
+                jobDisplayNameAttribute);
 
             return Job.FromExpression(() => DynamicJob.Execute(dynamicJob, default));
         }

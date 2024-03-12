@@ -2,6 +2,7 @@
 // Please see the LICENSE file for the licensing details.
 
 using System;
+using System.Globalization;
 using Hangfire.Annotations;
 using Hangfire.Common;
 using Hangfire.Dashboard;
@@ -23,6 +24,13 @@ namespace Hangfire
             {
                 if (arg is DynamicJob dynamicJob)
                 {
+                    //create display name from JobDisplayNameAttribute
+                    if (dynamicJob.DisplayName != null)
+                    {
+                        var displayName = GenerateDisplayName(dynamicJob);
+                        return displayName;
+                    }
+
                     return $"Dynamic: {ExtractTypeName(dynamicJob.Type, out _, out _)}.{dynamicJob.Method}";
                 }
             }
@@ -60,5 +68,26 @@ namespace Hangfire
 
             return type;
         }
+
+
+
+        internal static string GenerateDisplayName(DynamicJob job)
+        {
+
+            var text = job.DisplayName.DisplayName;
+
+            //code from format method of JobDisplayNameAttribute with private properties (cache/resources)
+            //if (ResourceType != null)
+            //{
+            //    text = _resourceManagerCache.GetOrAdd(ResourceType, InitResourceManager).GetString(DisplayName, CultureInfo.CurrentUICulture);
+            //    if (string.IsNullOrEmpty(text))
+            //    {
+            //        text = DisplayName;
+            //    }
+            //}
+            string[] arguments = SerializationHelper.Deserialize<string[]>(job.Args);
+            return string.Format(CultureInfo.CurrentCulture, text, arguments);
+        }
+
     }
 }
