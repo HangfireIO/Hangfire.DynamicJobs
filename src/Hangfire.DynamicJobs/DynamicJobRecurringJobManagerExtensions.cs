@@ -144,7 +144,7 @@ namespace Hangfire
                 invocationData.Arguments,
                 filters?.ToArray());
 
-            return Job.FromExpression(() => DynamicJob.Execute(dynamicJob, default));
+            return Job.FromExpression(() => DynamicJob.Execute(dynamicJob, default), job.Queue);
         }
     }
 }
