@@ -2,6 +2,7 @@
 // Please see the LICENSE file for the licensing details.
 
 using System;
+using System.Globalization;
 using Hangfire.Annotations;
 using Hangfire.Common;
 using Hangfire.Dashboard;
@@ -23,6 +24,11 @@ namespace Hangfire
             {
                 if (arg is DynamicJob dynamicJob)
                 {
+                    if (dynamicJob.DisplayName != null)
+                    {
+                        return FormatDynamicDisplayName(dynamicJob);
+                    }
+
                     return $"Dynamic: {ExtractTypeName(dynamicJob.Type, out _, out _)}.{dynamicJob.Method}";
                 }
             }
@@ -59,6 +65,14 @@ namespace Hangfire
             }
 
             return type;
+        }
+
+        private static string FormatDynamicDisplayName([NotNull] DynamicJob dynamicJob)
+        {
+            var format = dynamicJob.DisplayName;
+            var args = SerializationHelper.Deserialize<object[]>(dynamicJob.Args);
+
+            return string.Format(CultureInfo.CurrentCulture, format, args);
         }
     }
 }

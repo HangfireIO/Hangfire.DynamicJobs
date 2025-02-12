@@ -26,7 +26,8 @@ namespace Hangfire.Microservices.OrdersService
                 "* * * * *",
                 new DynamicRecurringJobOptions
                 {
-                    Filters = new [] { new QueueAttribute("newsletter") }
+                    Filters = new [] { new QueueAttribute("newsletter") },
+                    DisplayName = "Process newsletter '{0}'"
                 });
 
             if (env.IsDevelopment())
