@@ -11,5 +11,8 @@ namespace Hangfire
     {
         [CanBeNull]
         public IEnumerable<JobFilterAttribute> Filters { get; set; }
+
+        [CanBeNull]
+        public string DisplayName { get; set; }
     }
 }

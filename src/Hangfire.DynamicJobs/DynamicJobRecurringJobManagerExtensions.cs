@@ -28,7 +28,7 @@ namespace Hangfire
 
             manager.AddOrUpdate(
                 recurringJobId,
-                ToDynamicJob(job, options?.Filters),
+                ToDynamicJob(job, options?.Filters, options?.DisplayName),
                 cronExpression,
                 options ?? new RecurringJobOptions());
         }
@@ -133,7 +133,7 @@ namespace Hangfire
             AddOrUpdateDynamic(manager, recurringJobId, job, cronExpression, options);
         }
 
-        private static Job ToDynamicJob([NotNull] Job job, [CanBeNull] IEnumerable<JobFilterAttribute> filters)
+        private static Job ToDynamicJob([NotNull] Job job, [CanBeNull] IEnumerable<JobFilterAttribute> filters, [CanBeNull] string displayName)
         {
             if (job == null) throw new ArgumentNullException(nameof(job));
 
@@ -142,7 +142,8 @@ namespace Hangfire
                 invocationData.Method,
                 !String.IsNullOrEmpty(invocationData.ParameterTypes) ? invocationData.ParameterTypes : null,
                 invocationData.Arguments,
-                filters?.ToArray());
+                filters?.ToArray(),
+                !String.IsNullOrEmpty(displayName) ? displayName : null);
 
             return Job.FromExpression(() => DynamicJob.Execute(dynamicJob, default));
         }

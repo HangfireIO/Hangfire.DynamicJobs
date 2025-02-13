@@ -18,13 +18,15 @@ namespace Hangfire
             [NotNull] string method,
             [CanBeNull] string parameterTypes,
             [CanBeNull] string args,
-            [CanBeNull] JobFilterAttribute[] filters)
+            [CanBeNull] JobFilterAttribute[] filters,
+            [CanBeNull] string displayName)
         {
             Type = type ?? throw new ArgumentNullException(nameof(type));
             Method = method ?? throw new ArgumentNullException(nameof(method));
             ParameterTypes = parameterTypes;
             Args = args;
             Filters = filters;
+            DisplayName = displayName;
         }
 
         [NotNull]
@@ -48,6 +50,10 @@ namespace Hangfire
         [SuppressMessage("Performance", "CA1819:Properties should not return arrays")]
         [SuppressMessage("Security", "CA2326:Do not use TypeNameHandling values other than None")]
         public JobFilterAttribute[] Filters { get; }
+
+        [CanBeNull]
+        [JsonProperty("d", NullValueHandling = NullValueHandling.Ignore)]
+        public string DisplayName { get; }
 
         [PublicAPI]
         [DynamicJobDisplayName]
