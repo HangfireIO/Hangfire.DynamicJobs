@@ -12,9 +12,13 @@
     <readme>README.md</readme>
     <icon>icon.png</icon>
     <description>Dynamic recurring jobs for Hangfire to support multiple code bases with single storage.</description>
-    <copyright>Copyright © 2023-2025 Hangfire OÜ</copyright>
+    <copyright>Copyright © 2023–2025 Hangfire OÜ</copyright>
     <tags>Hangfire RecurringJobs</tags>
-    <releaseNotes>https://github.com/HangfireIO/Hangfire.DynamicJobs/releases
+    <releaseNotes><![CDATA[https://github.com/HangfireIO/Hangfire.DynamicJobs/releases
+
+0.3.0
+• Added – `DynamicRecurringJobOptions.DisplayName` property for a custom display name in Dashboard UI.
+• Fixed – The `queue` argument is not respected in the corresponding `AddOrUpdateDynamic` overloads.
 
 0.2.0
 • Project – Enable source link support with embedded symbols and repository-based sources.
@@ -29,7 +33,7 @@
 
 0.1.0
 Initial release
-
+]]>
     </releaseNotes>
     <dependencies>
       <group targetFramework="net451">
