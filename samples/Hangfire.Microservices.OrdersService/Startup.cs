@@ -13,6 +13,8 @@ namespace Hangfire.Microservices.OrdersService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHangfire(config => config
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+                .UseSimpleAssemblyNameTypeSerializer()
                 .UseDynamicJobs()
                 .UseSqlServerStorage("Database=Hangfire.DynamicJobs; Integrated Security=true; Trust Server Certificate=true"));
 
