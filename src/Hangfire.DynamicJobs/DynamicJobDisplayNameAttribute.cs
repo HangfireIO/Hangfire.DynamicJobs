@@ -23,6 +23,11 @@ namespace Hangfire
             {
                 if (arg is DynamicJob dynamicJob)
                 {
+                    if (dynamicJob.DisplayName != null)
+                    {
+                        return dynamicJob.DisplayName;
+                    }
+
                     return $"Dynamic: {ExtractTypeName(dynamicJob.Type, out _, out _)}.{dynamicJob.Method}";
                 }
             }

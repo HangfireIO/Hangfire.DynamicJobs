@@ -12,7 +12,7 @@
     <readme>README.md</readme>
     <icon>icon.png</icon>
     <description>Dynamic recurring jobs for Hangfire to support multiple code bases with single storage.</description>
-    <copyright>Copyright © 2023-2024 Hangfire OÜ</copyright>
+    <copyright>Copyright © 2023-2025 Hangfire OÜ</copyright>
     <tags>Hangfire RecurringJobs</tags>
     <releaseNotes>https://github.com/HangfireIO/Hangfire.DynamicJobs/releases
 

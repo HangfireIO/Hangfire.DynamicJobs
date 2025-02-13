@@ -1,3 +1,4 @@
+using System;
 using Hangfire.Microservices.NewsletterService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +13,8 @@ namespace Hangfire.Microservices.OrdersService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHangfire(config => config
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+                .UseSimpleAssemblyNameTypeSerializer()
                 .UseDynamicJobs()
                 .UseSqlServerStorage("Database=Hangfire.DynamicJobs; Integrated Security=true; Trust Server Certificate=true"));
 
@@ -20,13 +23,16 @@ namespace Hangfire.Microservices.OrdersService
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRecurringJobManager manager)
         {
+            var campaignId = 1111;
+
             manager.AddOrUpdateDynamic(
                 "periodic-newsletter",
-                () => NewsletterSender.Execute(1111),
+                () => NewsletterSender.Execute(campaignId),
                 "* * * * *",
                 new DynamicRecurringJobOptions
                 {
-                    Filters = new [] { new QueueAttribute("newsletter") }
+                    Filters = new [] { new QueueAttribute("newsletter") },
+                    DisplayName = $"Process newsletter '{campaignId}'"
                 });
 
             if (env.IsDevelopment())
