@@ -15,7 +15,7 @@ namespace Hangfire
     public static class DynamicJobRecurringJobManagerExtensions
     {
         public static void AddOrUpdateDynamic(
-            [NotNull] IRecurringJobManager manager,
+            [NotNull] this IRecurringJobManager manager,
             [NotNull] string recurringJobId,
             [NotNull] Job job,
             [NotNull] string cronExpression,
